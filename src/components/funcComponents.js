@@ -5,10 +5,11 @@ export default class AddInventory extends Component{
     constructor() {
         super();
         this.state = {
-            products: []
+            products: [ {product_name: 'Milk', price : '12', qty:3 }]
         }
         this.formData = createRef();
     }
+
     // addproduct handler method
     add = (event) => {
         event.preventDefault();
@@ -18,13 +19,15 @@ export default class AddInventory extends Component{
             price: this.formData.current.price.value,
             qty: Number(this.formData.current.qty.value)
         }
+
         // add a new product inside products array
         this.state.products.push(newProduct);
         this.setState({
             products: this.state.products
         });
-        //console.log(products);
+        console.log(this.state.products);
     }
+
     // delete todo from the array
     deleteTodo = (event)=> {
         // splice(indexNumber, howmanyTodelete)
@@ -33,6 +36,7 @@ export default class AddInventory extends Component{
             products: this.state.products
         })
     }
+
     // increment qty value by 1
     increQty = (event) => {
         //console.log(event.target.value)
@@ -42,6 +46,7 @@ export default class AddInventory extends Component{
             products: this.state.products
         });
     }
+
     // decrement qty value by 1
     decreQty = (event) => {
         const indexOfArray = event.target.value;
@@ -50,18 +55,14 @@ export default class AddInventory extends Component{
         this.state.products[indexOfArray].qty = this.state.products[indexOfArray].qty - 1;
         //console.log(this.state.products[indexOfArray].qty)
         };
-        /*
-        if(this.state.products[indexOfArray].qty == 0){
-            this.setState({
-                products: "Out of order"
-            });
-        }*/
         this.setState({
             products: this.state.products
         });
     }
 
     render() {
+
+
         return (
             <div>
                 <Table>
@@ -76,11 +77,17 @@ export default class AddInventory extends Component{
                     <tbody>
                         {
                             this.state.products.map((item, index) => {
+
                                 return (
+                                    
                                     <tr key={index}>
+                                        
                                         <td>{item.product_name}</td>
                                         <td>{item.price}</td>
-                                        <td>{item.qty}</td>
+                                        <td>
+                                            {item.qty}
+                                        </td>
+                                        
                                         <td>
                                             <Button variant="success" onClick={event => this.increQty(event)} value={index}>+</Button>
                                             <Button variant="danger" onClick={event => this.decreQty(event)} value={index}>-</Button>

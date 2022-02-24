@@ -1,6 +1,7 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'; //Popup
+import 'bootstrap/dist/css/bootstrap.min.css';
 import AddProduct from './components/funcComponents';
+import logo from './logo.png';
 
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className='Title'>
-        <img src={".shop/public/logo192.png"} alt="Logo" />;
+        <img src={logo} className="App-logo" alt="logo" />
         <h1>Welcome to the store !</h1>
         </div>
       </header>

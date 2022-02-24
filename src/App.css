@@ -24,3 +24,10 @@
 .App-link {
   color: #61dafb;
 }
+
+.App-logo{
+  background-color: white;
+  padding: 4px;
+  border-radius: 10px;
+  width: 50px;
+}
