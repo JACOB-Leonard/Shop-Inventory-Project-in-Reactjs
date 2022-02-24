@@ -45,7 +45,17 @@ export default class AddInventory extends Component{
     // decrement qty value by 1
     decreQty = (event) => {
         const indexOfArray = event.target.value;
+        //console.log(event.target.value)
+        if(this.state.products[indexOfArray].qty > 0){
         this.state.products[indexOfArray].qty = this.state.products[indexOfArray].qty - 1;
+        //console.log(this.state.products[indexOfArray].qty)
+        };
+        /*
+        if(this.state.products[indexOfArray].qty == 0){
+            this.setState({
+                products: "Out of order"
+            });
+        }*/
         this.setState({
             products: this.state.products
         });
@@ -54,10 +64,9 @@ export default class AddInventory extends Component{
     render() {
         return (
             <div>
-                <Table striped bordered hover variant="dark">
+                <Table>
                     <thead>
                         <tr>
-                            <th>Index</th>
                             <th>Product Name:</th>
                             <th>Price</th>
                             <th>Qty</th>
@@ -69,7 +78,6 @@ export default class AddInventory extends Component{
                             this.state.products.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td>{index}</td>
                                         <td>{item.product_name}</td>
                                         <td>{item.price}</td>
                                         <td>{item.qty}</td>
@@ -104,7 +112,7 @@ export default class AddInventory extends Component{
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
-                        Add to Inventory
+                        Create
                     </Button>
                 </Form>
             </div>

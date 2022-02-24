@@ -7,9 +7,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to the store !!</h1>
-        <AddProduct/>
+        <div className='Title'>
+        <img src={".shop/public/logo192.png"} alt="Logo" />;
+        <h1>Welcome to the store !</h1>
+        </div>
       </header>
+      <AddProduct/>
     </div>
   );
 }
